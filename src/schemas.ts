@@ -2,7 +2,7 @@ import { gql } from "apollo-server-express";
 
 export default gql`
   type Query {
-    list(name: String): [User]!
+    list(name: String, _id: String): [User]!
   }
 
   type User {

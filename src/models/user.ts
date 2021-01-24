@@ -14,12 +14,14 @@ export interface User {
   greeting?: string; // This looks strange, as the user inside of friends doesn't have it
 }
 
-const allUsers: User[] = require("./db.json");
-
-export const getUsers = (name?: string): User[] => {
+export const getUsers = (_id?: string, name?: string): User[] => {
+  let allUsers: User[] = require("./db.json");
+  if (_id) {
+    allUsers = allUsers.filter((user) => user._id === _id);
+  }
   if (name) {
     const regExp = new RegExp(name, "i");
-    return allUsers.filter((user) => user.name.match(regExp));
+    allUsers = allUsers.filter((user) => user.name.match(regExp));
   }
   return allUsers;
 };

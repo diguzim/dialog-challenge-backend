@@ -2,8 +2,8 @@ import { User, getUsers } from "./models/user";
 
 export default {
   Query: {
-    list: (_: any, { name }: User) => {
-      const users = getUsers(name);
+    list: (_: any, { name, _id }: User) => {
+      const users = getUsers(_id, name);
       return users;
     },
   },
